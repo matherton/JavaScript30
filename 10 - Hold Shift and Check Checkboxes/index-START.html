@@ -58,31 +58,31 @@
     <div class="inbox">
       <form name="boxes">
         <div class="item">
-          <input type="checkbox" name="box[0]" />
+          <input type="checkbox" />
           <p>This is an inbox layout.</p>
         </div>
         <div class="item">
-          <input type="checkbox" name="box[1]" />
+          <input type="checkbox" />
           <p>Check one item</p>
         </div>
         <div class="item">
-          <input type="checkbox" name="box[2]" />
+          <input type="checkbox" />
           <p>Hold down your Shift key</p>
         </div>
         <div class="item">
-          <input type="checkbox" name="box[3]" />
+          <input type="checkbox" />
           <p>Check a lower item</p>
         </div>
         <div class="item">
-          <input type="checkbox" name="box[4]" />
+          <input type="checkbox" />
           <p>Everything in between should also be set to checked</p>
         </div>
         <div class="item">
-          <input type="checkbox" name="box[5]" />
+          <input type="checkbox" />
           <p>Try to do it without any libraries</p>
         </div>
         <div class="item">
-          <input type="checkbox" name="box[06" />
+          <input type="checkbox" />
           <p>Just regular JavaScript</p>
         </div>
         <div class="item">
@@ -104,10 +104,17 @@
       let lastChecked;
 
       function handleCheck(e) {
-        let inbetween = false;
+        let inBetween = false;
         if (e.shiftKey && this.checked) {
           checkboxes.forEach((checkbox) => {
             console.log(checkbox);
+            if (checkbox === this || checkbox === lastChecked) {
+              inBetween = !inBetween;
+              console.log("starting to check inbetween!");
+            }
+            if (inBetween) {
+              checkbox.checked = true;
+            }
           });
         }
 
