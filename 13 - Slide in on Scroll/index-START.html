@@ -241,7 +241,16 @@
       const sliderImages = document.querySelectorAll(".slide-in");
 
       function checkSlide(e) {
-        console.log(e);
+        //console.log(window.scrollY);
+        sliderImages.forEach((slideImage) => {
+          //half way through the image
+          const slideInAt =
+            window.scrollY + window.innerHeight - slideImage.height / 2;
+          //bottom of image
+          const imageBottom = slideImage.offsetTop + slideImage.height;
+          const isHalfShown = slideInAt > slideImage.offsetTop;
+          const isNotScolledPassed = window.scrollY < imageBottom;
+        });
       }
 
       window.addEventListener("scroll", debounce(checkSlide));
