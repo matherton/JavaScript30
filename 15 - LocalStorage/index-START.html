@@ -51,6 +51,7 @@
         <input type="text" name="item" placeholder="Item Name" required />
         <input type="submit" value="+ Add Item" />
       </form>
+      <button name="clear">clear checked</button>
     </div>
 
     <script>
@@ -96,6 +97,15 @@
         populateList(items, itemsList);
       }
 
+      function uncheckAll(e) {
+        var inputs = document.querySelectorAll("input[type='checkbox']");
+        for (var i = 0; i < inputs.length; i++) {
+          inputs[i].checked = false;
+        }
+      }
+
+      const clearButton = document.querySelector("[name=clear]");
+      clearButton.addEventListener("click", uncheckAll);
       addItems.addEventListener("submit", addItem);
       itemsList.addEventListener("click", toggleDone);
       populateList(items, itemsList);
