@@ -56,7 +56,7 @@
     <script>
       const addItems = document.querySelector(".add-items");
       const itemsList = document.querySelector(".plates");
-      const items = [];
+      const items = JSON.parse(localStorage.getItem("items")) || [];
 
       //cannot be an arrow fundction as context of this is changed in arrow functions
       function addItem(e) {
@@ -68,6 +68,7 @@
         };
         items.push(item);
         populateList(items, itemsList);
+        localStorage.setItem("items", JSON.stringify(items));
         this.reset();
       }
 
@@ -76,7 +77,9 @@
           .map((plate, i) => {
             return `
             <li>
-              <input type="checkbox" data-index=${i} id="item${i}" />
+              <input type="checkbox" data-index=${i} id="item${i}" ${
+              plate.done ? "checked" : ""
+            } />
               <label for="item${i}">${plate.text}</label>
             </li>
           `;
@@ -85,6 +88,8 @@
       }
 
       addItems.addEventListener("submit", addItem);
+
+      populateList(items, itemsList);
     </script>
   </body>
 </html>
