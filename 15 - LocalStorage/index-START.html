@@ -89,7 +89,8 @@
 
       function toggleDone(e) {
         if (!e.target.matches("input")) return; //skip anything that is clicked that is not an input
-        console.log(e.target);
+        const el = e.target;
+        console.log(el.dataset.index);
       }
 
       addItems.addEventListener("submit", addItem);
