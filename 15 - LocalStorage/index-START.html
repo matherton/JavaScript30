@@ -52,6 +52,7 @@
         <input type="submit" value="+ Add Item" />
       </form>
       <button name="clear">clear order</button>
+      <button name="submit">submit order</button>
     </div>
 
     <script>
@@ -106,8 +107,15 @@
         localStorage.clear();
       }
 
+      function fireOrder() {
+        console.log("Order", localStorage, "submitted");
+      }
+
       const clearButton = document.querySelector("[name=clear]");
       clearButton.addEventListener("click", uncheckAll);
+      const submitOrder = document.querySelector("[name=submit]");
+      submitOrder.addEventListener("click", fireOrder);
+
       addItems.addEventListener("submit", addItem);
       itemsList.addEventListener("click", toggleDone);
       populateList(items, itemsList);
