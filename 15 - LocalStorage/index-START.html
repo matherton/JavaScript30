@@ -51,7 +51,7 @@
         <input type="text" name="item" placeholder="Item Name" required />
         <input type="submit" value="+ Add Item" />
       </form>
-      <button name="clear">clear checked</button>
+      <button name="clear">clear order</button>
     </div>
 
     <script>
@@ -102,6 +102,8 @@
         for (var i = 0; i < inputs.length; i++) {
           inputs[i].checked = false;
         }
+
+        localStorage.clear();
       }
 
       const clearButton = document.querySelector("[name=clear]");
