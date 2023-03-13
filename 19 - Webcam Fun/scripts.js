@@ -8,8 +8,13 @@ function getVideo() {
   navigator.mediaDevices
     .getUserMedia({ video: true, audio: false })
     .then((localMediaStream) => {
-      console.log(localMediaStream);
-      video.src = window.URL.createObjectURL(localMediaStream);
+      //console.log(localMediaStream);
+      //video.src = window.URL.createObjectURL(localMediaStream); does not work in chrome so changed to:
+      video.srcObject = localMediaStream;
+      video.play();
+    })
+    .catch((err) => {
+      console.log("oh no", err);
     });
 }
 
