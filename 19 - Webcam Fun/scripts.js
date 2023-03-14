@@ -34,6 +34,12 @@ function takePhoto() {
   snap.play();
 
   //take the data out of canvas
+  const data = canvas.toDataURL("image/jpeg", 1.0);
+  const link = document.createElement("a");
+  link.href = data;
+  link.setAttribute("download", "handsome");
+  link.innerHTML = `<img src="${data}" alt="sexy"/>`;
+  strip.insertBefore(link, strip.firstChild);
 }
 
 getVideo();
